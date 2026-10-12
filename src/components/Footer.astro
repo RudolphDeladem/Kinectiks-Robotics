@@ -1,0 +1,182 @@
+---
+import Logo from './Logo.astro';
+import Arrow from './Arrow.astro';
+import { primaryNav, secondaryNav, legalNav, site, contactLink } from '../data/site';
+
+interface Props {
+  showCta?: boolean;
+}
+
+const { showCta = true } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <p class="footer-motto">
+        Putting the world <span class="accent">in motion.</span>
+      </p>
+      {
+        showCta && (
+          <a class="btn btn--primary" href={contactLink.href}>
+            {contactLink.label}
+            <Arrow />
+          </a>
+        )
+      }
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="/" aria-label={`${site.name} home`} class="footer-logo"><Logo size="lg" /></a>
+        <p>{site.description}</p>
+      </div>
+
+      <nav class="footer-col" aria-label="Company">
+        <p class="eyebrow">Company</p>
+        <ul>
+          {primaryNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav class="footer-col" aria-label="Explore">
+        <p class="eyebrow">Explore</p>
+        <ul>
+          {secondaryNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+
+      <div class="footer-col">
+        <p class="eyebrow">Get in touch</p>
+        <ul>
+          <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+          <li><span>{site.location}</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} {site.name}. All rights reserved.</p>
+      <ul>
+        {legalNav.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    border-top: 1px solid var(--rule-dark);
+    padding-top: clamp(4rem, 3rem + 4vw, 7rem);
+  }
+
+  .footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-bottom: clamp(3rem, 2rem + 3vw, 5rem);
+    border-bottom: 1px solid var(--rule-dark);
+  }
+
+  .footer-motto {
+    max-width: 14ch;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 118%;
+    font-size: var(--step-4);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.6fr repeat(3, 1fr);
+    gap: 3rem 2rem;
+    padding-block: clamp(3rem, 2rem + 3vw, 4.5rem);
+  }
+
+  .footer-logo {
+    display: inline-block;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-brand p {
+    max-width: 38ch;
+    color: var(--muted-on-dark);
+    font-size: 0.95rem;
+  }
+
+  .footer-col .eyebrow {
+    margin-bottom: 1.1rem;
+    color: var(--orange);
+  }
+
+  .footer-col ul {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .footer-col a,
+  .footer-col span {
+    color: rgba(246, 242, 234, 0.82);
+    font-size: 0.97rem;
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-col a:hover {
+    color: var(--white);
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-underline-offset: 4px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.75rem 2.25rem;
+    border-top: 1px solid var(--rule-dark);
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--muted-on-dark);
+  }
+
+  .footer-bottom ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-bottom a {
+    text-decoration: none;
+  }
+
+  .footer-bottom a:hover {
+    color: var(--white);
+  }
+
+  @media (max-width: 900px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

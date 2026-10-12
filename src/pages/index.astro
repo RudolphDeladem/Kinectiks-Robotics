@@ -1,0 +1,945 @@
+---
+import { Picture } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Arrow from '../components/Arrow.astro';
+import { site } from '../data/site';
+
+import roverSunset from '../assets/images/rover-sunset.png';
+import farmerHighlands from '../assets/images/farmer-highlands.png';
+import fieldTeam from '../assets/images/field-team-golden-hour.png';
+import farmlandOverlook from '../assets/images/farmland-overlook.png';
+
+// Content below is taken from the Kinectiks brand profile and pitch deck supplied in the project.
+const labours = ['mow', 'spray', 'monitor', 'harvest'];
+
+const conditions = ['Extreme heat', 'Difficult terrain', 'Ageing equipment', 'Rising operating costs', 'Shrinking rural labour'];
+
+const operations = [
+  { name: 'Grow', tasks: ['Crop monitoring', 'Field scouting', 'Weed detection', 'Data collection'] },
+  { name: 'Protect', tasks: ['Precision spraying', 'Pest management', 'Field inspection', 'Crop protection'] },
+  { name: 'Maintain', tasks: ['Autonomous mowing', 'Vegetation control', 'Grounds maintenance', 'Path and row clearing'] },
+  { name: 'Move', tasks: ['Harvest assistance', 'Material transport', 'Farm logistics', 'Payload flexibility'] },
+];
+
+const loop = [
+  { step: 'Sense', detail: 'LiDAR, cameras, sensors and encoders read the field.' },
+  { step: 'Think', detail: 'AI perception and decision making plan the work.' },
+  { step: 'Act', detail: 'Autonomous movement carries out the task.' },
+];
+
+const principles = [
+  { name: 'Built for Africa', detail: 'Uneven terrain, dust, heat and fragmented fields.' },
+  { name: 'Reliable', detail: 'Rugged hardware designed for real-world conditions.' },
+  { name: 'Electric', detail: 'Lower operating costs. Better for the environment.' },
+  { name: 'Scalable', detail: 'One platform. Many applications.' },
+];
+---
+
+<Base overlayHeader footerCta={false} description={site.description}>
+  <!-- ============ HERO ============ -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-media" aria-hidden="true">
+      <Picture
+        src={roverSunset}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        quality={78}
+        widths={[640, 960, 1280, 1672]}
+        sizes="100vw"
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
+
+    <div class="hero-body wrap">
+      <p class="eyebrow hero-eyebrow" data-reveal>Agricultural robotics &middot; {site.location}</p>
+      <h1 id="hero-title" class="hero-title" data-reveal style="--delay: 0.08s">
+        Autonomous machines, <span class="accent">built for Africa.</span>
+      </h1>
+      <div class="hero-foot" data-reveal style="--delay: 0.18s">
+        <p class="lede">
+          We are developing a modular robotic platform that autonomously performs repetitive agricultural and outdoor
+          tasks, reducing dependence on manual labour while increasing efficiency.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn--primary" href="/solutions">Explore solutions <Arrow /></a>
+          <a class="btn btn--ghost-dark" href="/about">About Kinectiks</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-meta wrap" aria-hidden="true">
+      <div class="hero-meta-inner">
+        <span>{site.tagline}</span>
+        <span class="hero-meta-render">Concept render</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 01 THE PROBLEM ============ -->
+  <section class="section section--light problem" aria-labelledby="problem-title">
+    <div class="wrap">
+      <p class="index-line"><b>01</b><span>The problem</span></p>
+
+      <div class="problem-grid">
+        <div class="problem-copy">
+          <h2 id="problem-title" class="h-xl" data-reveal>African agriculture is still powered by human labour.</h2>
+          <p class="lede problem-lede" data-reveal>
+            Across Africa, millions of farmers still perform by hand the repetitive tasks that machines have automated
+            elsewhere for decades.
+          </p>
+
+          <ul class="labour-stack" aria-label="Work still done by hand" data-reveal>
+            {labours.map((verb) => <li>They <mark>{verb}.</mark></li>)}
+          </ul>
+        </div>
+
+        <figure class="problem-figure frame" data-reveal style="--delay: 0.1s">
+          <Picture
+            src={farmerHighlands}
+            formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        quality={78}
+            widths={[480, 800, 1100]}
+            sizes="(max-width: 900px) 100vw, 40vw"
+            alt="A farmer working the soil with a hoe at sunset"
+          />
+        </figure>
+      </div>
+
+      <div class="conditions" data-reveal>
+        <p class="eyebrow">And they do it under</p>
+        <ul>
+          {conditions.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+
+      <p class="problem-close" data-reveal>
+        The problem isn&rsquo;t a lack of effort. It&rsquo;s a lack of <mark>appropriate automation.</mark>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 02 THE PLATFORM ============ -->
+  <section class="section section--dark platform" aria-labelledby="platform-title">
+    <div class="wrap">
+      <p class="index-line"><b>02</b><span>Our solution</span></p>
+
+      <div class="platform-head">
+        <h2 id="platform-title" class="h-xl" data-reveal>One platform.<br /><span class="accent">Multiple operations.</span></h2>
+        <p class="lede platform-lede" data-reveal style="--delay: 0.1s">
+          A single autonomous machine, designed to take on the repetitive outdoor work that holds farms back, from
+          scouting crops to moving harvests.
+        </p>
+      </div>
+
+      <figure class="platform-figure frame" data-reveal>
+        <Picture
+          src={roverSunset}
+          formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        quality={78}
+          widths={[640, 1024, 1672]}
+          sizes="(max-width: 1360px) 100vw, 1260px"
+          alt="Concept render of a Kinectiks autonomous field robot in a crop field at sunset"
+        />
+        <figcaption class="frame-caption">Concept render</figcaption>
+      </figure>
+
+      <ol class="ops">
+        {
+          operations.map((op, i) => (
+            <li class="op" data-reveal style={`--delay: ${i * 0.07}s`}>
+              <span class="op-index">{String(i + 1).padStart(2, '0')}</span>
+              <h3 class="op-name">{op.name}</h3>
+              <ul>
+                {op.tasks.map((t) => (
+                  <li>{t}</li>
+                ))}
+              </ul>
+            </li>
+          ))
+        }
+      </ol>
+
+      <div class="loop" aria-labelledby="loop-title">
+        <h3 id="loop-title" class="eyebrow loop-title" data-reveal>How it works</h3>
+        <ol class="loop-rail">
+          {
+            loop.map((item, i) => (
+              <li data-reveal style={`--delay: ${i * 0.1}s`}>
+                <span class="loop-step">{item.step}</span>
+                <p>{item.detail}</p>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <a class="text-link platform-link" href="/solutions" data-reveal>See all solutions <Arrow /></a>
+    </div>
+  </section>
+
+  <!-- ============ STATEMENT BAND ============ -->
+  <section class="statement" aria-labelledby="statement-title">
+    <div class="statement-media" aria-hidden="true">
+      <Picture
+        src={fieldTeam}
+        formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        quality={78}
+        widths={[640, 1024, 1671]}
+        sizes="100vw"
+        alt=""
+      />
+    </div>
+    <div class="statement-body wrap">
+      <h2 id="statement-title" class="statement-title" data-reveal>
+        Africa doesn&rsquo;t need more labour.<br /><span class="accent">It needs the right machines.</span>
+      </h2>
+      <ul class="principles">
+        {
+          principles.map((p, i) => (
+            <li data-reveal style={`--delay: ${i * 0.07}s`}>
+              <strong>{p.name}</strong>
+              <span>{p.detail}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ 03 WHO WE ARE ============ -->
+  <section class="section section--light about" aria-labelledby="about-title">
+    <div class="wrap">
+      <p class="index-line"><b>03</b><span>Who we are</span></p>
+
+      <div class="about-grid">
+        <figure class="about-figure frame" data-reveal>
+          <Picture
+            src={farmlandOverlook}
+            formats={['avif', 'webp']}
+        fallbackFormat="jpg"
+        quality={78}
+            widths={[480, 800, 1200]}
+            sizes="(max-width: 900px) 100vw, 42vw"
+            alt="A member of the Kinectiks team looking out over farmland at sunset"
+          />
+        </figure>
+
+        <div class="about-copy">
+          <h2 id="about-title" class="h-lg" data-reveal>African-born. Built in Accra. Starting from the ground up.</h2>
+          <p class="about-text" data-reveal>
+            Kinectiks Robotics is an African-born robotics and automation company headquartered in Accra, Ghana. We
+            design, engineer and deploy intelligent robotic systems that eliminate repetitive physical labour, increase
+            productivity and improve quality of life.
+          </p>
+
+          <dl class="vm">
+            <div data-reveal>
+              <dt class="eyebrow">Vision</dt>
+              <dd>
+                To be Africa&rsquo;s leading robotics company, building intelligent machines that transform how the
+                world lives and works.
+              </dd>
+            </div>
+            <div data-reveal style="--delay: 0.1s">
+              <dt class="eyebrow">Mission</dt>
+              <dd>
+                To design and deliver smart, accessible and powerful robotic solutions that put the world in motion,
+                one machine at a time.
+              </dd>
+            </div>
+          </dl>
+
+          <a class="text-link" href="/about" data-reveal>More about Kinectiks <Arrow /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT CTA ============ -->
+  <section class="section section--orange cta" aria-labelledby="cta-title">
+    <div class="wrap cta-inner">
+      <h2 id="cta-title" class="cta-title" data-reveal>Let&rsquo;s build the right machines for African farms.</h2>
+      <div class="cta-side" data-reveal style="--delay: 0.1s">
+        <p>Have a question, an idea or a field that needs the right machine? We&rsquo;d like to hear from you.</p>
+        <div class="cta-actions">
+          <a class="btn btn--ink" href="/contact">Contact us <Arrow /></a>
+          <a class="btn btn--ghost-ink" href={`mailto:${site.email}`}>{site.email}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  /* ---------- shared headline sizes ---------- */
+  .h-xl {
+    font-size: var(--step-4);
+  }
+
+  .h-lg {
+    font-size: var(--step-3);
+  }
+
+  mark {
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--orange);
+    text-decoration-thickness: 0.14em;
+    text-underline-offset: 0.12em;
+    text-decoration-skip-ink: none;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    display: grid;
+    grid-template-rows: 1fr auto;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 100svh;
+    max-height: 1100px;
+    padding-top: calc(var(--header-h) + 3rem);
+    color: var(--text-on-dark);
+    background: var(--ink);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .hero-media :global(picture),
+  .statement-media :global(picture) {
+    display: block;
+    height: 100%;
+  }
+
+  .hero-media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 68% 60%;
+    animation: hero-settle 2.4s var(--ease) both;
+  }
+
+  .hero-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(13, 13, 13, 0.82) 0%, rgba(13, 13, 13, 0.45) 45%, rgba(13, 13, 13, 0) 75%),
+      linear-gradient(0deg, rgba(13, 13, 13, 0.9) 0%, rgba(13, 13, 13, 0) 45%);
+  }
+
+  @keyframes hero-settle {
+    from {
+      transform: scale(1.06);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+
+  .hero-body {
+    align-self: end;
+    padding-bottom: clamp(2rem, 1rem + 3vw, 3.5rem);
+  }
+
+  .hero-eyebrow {
+    color: var(--orange);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    max-width: 12ch;
+    font-size: min(var(--step-5), 9.6vw);
+    font-stretch: 122%;
+    line-height: 0.92;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+  }
+
+  .hero-foot {
+    display: grid;
+    grid-template-columns: minmax(0, 46ch) auto;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem 3rem;
+    margin-top: clamp(2rem, 1.5rem + 2vw, 3rem);
+  }
+
+  .hero-foot .lede {
+    color: rgba(246, 242, 234, 0.86);
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .hero-meta-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-block: 1.1rem 1.4rem;
+    border-top: 1px solid var(--rule-dark);
+  }
+
+  .hero-meta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-on-dark);
+  }
+
+  /* ---------- 01 PROBLEM ---------- */
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: clamp(2.5rem, 1rem + 5vw, 6rem);
+    align-items: start;
+  }
+
+  .problem-lede {
+    max-width: 44ch;
+    margin-top: 2rem;
+    color: var(--muted-on-light);
+  }
+
+  .labour-stack {
+    margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+    border-top: 1px solid var(--rule-light);
+  }
+
+  .labour-stack li {
+    padding-block: 0.55rem;
+    border-bottom: 1px solid var(--rule-light);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 118%;
+    font-size: var(--step-3);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .labour-stack li::first-line {
+    color: var(--muted-on-light);
+  }
+
+  .labour-stack mark {
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .problem-figure {
+    aspect-ratio: 4 / 5;
+    margin: 0;
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+
+  .problem-figure :global(img) {
+    filter: grayscale(1) contrast(1.12) brightness(0.92);
+  }
+
+  .conditions {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem 2rem;
+    align-items: baseline;
+    margin-top: clamp(4rem, 3rem + 4vw, 7rem);
+    padding-block: 1.75rem;
+    border-block: 1px solid var(--rule-light);
+  }
+
+  .conditions .eyebrow {
+    color: var(--muted-on-light);
+  }
+
+  .conditions ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem 2.25rem;
+  }
+
+  .conditions li {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .conditions li::before {
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    margin-right: 0.6rem;
+    border-radius: 2px;
+    background: var(--orange);
+    vertical-align: 0.12em;
+  }
+
+  .problem-close {
+    max-width: 22ch;
+    margin-top: clamp(4rem, 3rem + 4vw, 7rem);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 115%;
+    font-size: var(--step-4);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+  }
+
+  /* ---------- 02 PLATFORM ---------- */
+  .platform-head {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 2rem clamp(2.5rem, 1rem + 5vw, 6rem);
+    align-items: end;
+  }
+
+  .platform-lede {
+    color: var(--muted-on-dark);
+  }
+
+  .platform-figure {
+    margin: clamp(3rem, 2rem + 3vw, 5rem) 0 0;
+    aspect-ratio: 21 / 9;
+  }
+
+  .platform-figure :global(img) {
+    object-position: 60% 62%;
+  }
+
+  .ops {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: clamp(3rem, 2rem + 3vw, 5rem) 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--rule-dark);
+  }
+
+  .op {
+    position: relative;
+    padding: 2rem clamp(1rem, 2vw, 2rem) 2.25rem 0;
+  }
+
+  .op + .op {
+    padding-left: clamp(1rem, 2vw, 2rem);
+    border-left: 1px solid var(--rule-dark);
+  }
+
+  .op::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--orange);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.6s var(--ease);
+  }
+
+  .op:hover::before {
+    transform: scaleX(1);
+  }
+
+  .op-index {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--orange);
+    letter-spacing: 0.08em;
+  }
+
+  .op-name {
+    margin: 0.9rem 0 1.4rem;
+    font-size: var(--step-2);
+    font-stretch: 120%;
+    text-transform: uppercase;
+  }
+
+  .op ul {
+    display: grid;
+    gap: 0.5rem;
+    color: var(--muted-on-dark);
+    font-size: 0.97rem;
+  }
+
+  .loop {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 1.5rem 2rem;
+    margin-top: clamp(4rem, 3rem + 3vw, 6rem);
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule-dark);
+  }
+
+  .loop-title {
+    color: var(--orange);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+
+  .loop-rail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: loop;
+  }
+
+  .loop-rail li {
+    position: relative;
+    padding-top: 1.75rem;
+  }
+
+  .loop-rail li::before {
+    content: '';
+    position: absolute;
+    top: 0.35rem;
+    left: 0;
+    right: -2rem;
+    height: 1px;
+    background: var(--rule-dark);
+  }
+
+  .loop-rail li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    background: var(--orange);
+  }
+
+  .loop-rail li:last-child::before {
+    right: 0;
+  }
+
+  .loop-step {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 120%;
+    font-size: var(--step-2);
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .loop-rail p {
+    margin-top: 0.6rem;
+    max-width: 30ch;
+    color: var(--muted-on-dark);
+    font-size: 0.97rem;
+  }
+
+  .platform-link {
+    margin-top: clamp(3rem, 2rem + 2vw, 4rem);
+    color: var(--white);
+  }
+
+  /* ---------- STATEMENT ---------- */
+  .statement {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: min(92svh, 900px);
+    padding-block: clamp(5rem, 4rem + 6vw, 9rem) clamp(2.5rem, 2rem + 2vw, 3.5rem);
+    color: var(--text-on-dark);
+    background: var(--ink);
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .statement-media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .statement-media :global(img) {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
+
+  .statement-media::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(13, 13, 13, 0.7) 0%, rgba(13, 13, 13, 0.25) 60%, rgba(13, 13, 13, 0) 100%),
+      linear-gradient(0deg, rgba(13, 13, 13, 0.92) 0%, rgba(13, 13, 13, 0.45) 55%, rgba(13, 13, 13, 0.2) 100%);
+  }
+
+  .statement-title {
+    max-width: 18ch;
+    font-size: var(--step-4);
+    font-stretch: 118%;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+
+  .principles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem 2rem;
+    margin-top: clamp(3rem, 2rem + 3vw, 5rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.24);
+  }
+
+  .principles strong {
+    display: block;
+    margin-bottom: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+
+  .principles span {
+    font-size: 0.97rem;
+    color: rgba(246, 242, 234, 0.86);
+  }
+
+  /* ---------- 03 ABOUT ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: clamp(2.5rem, 1rem + 5vw, 6rem);
+    align-items: center;
+  }
+
+  .about-figure {
+    margin: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .about-figure :global(img) {
+    object-position: 58% 50%;
+  }
+
+  .about-text {
+    max-width: 52ch;
+    margin-top: 1.75rem;
+    color: var(--muted-on-light);
+    font-size: var(--step-1);
+    line-height: 1.55;
+  }
+
+  .vm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin: clamp(2.5rem, 2rem + 2vw, 3.5rem) 0;
+  }
+
+  .vm div {
+    padding-top: 1.25rem;
+    border-top: 2px solid var(--ink);
+  }
+
+  .vm dt {
+    margin-bottom: 0.8rem;
+    color: var(--muted-on-light);
+  }
+
+  .vm dd {
+    margin: 0;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-stretch: 105%;
+    font-size: var(--step-1);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 2.5rem clamp(2.5rem, 1rem + 5vw, 6rem);
+    align-items: end;
+  }
+
+  .cta-title {
+    font-size: var(--step-4);
+    font-stretch: 118%;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+  }
+
+  .cta-side p {
+    max-width: 38ch;
+    font-size: var(--step-1);
+    line-height: 1.45;
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .cta-actions .btn--ghost-ink {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 0.9rem;
+    overflow-wrap: anywhere;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 1100px) {
+    .ops {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .op:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .op:nth-child(n + 3) {
+      border-top: 1px solid var(--rule-dark);
+    }
+
+    .principles {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-foot,
+    .problem-grid,
+    .platform-head,
+    .about-grid,
+    .cta-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .problem-figure {
+      position: relative;
+      top: 0;
+      aspect-ratio: 4 / 3;
+    }
+
+    .conditions,
+    .loop {
+      grid-template-columns: 1fr;
+    }
+
+    .platform-figure {
+      aspect-ratio: 4 / 3;
+    }
+
+    .about-figure {
+      aspect-ratio: 4 / 3;
+    }
+
+    .loop-rail {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+
+    .loop-rail li {
+      padding: 0 0 1.75rem 2rem;
+    }
+
+    .loop-rail li::before {
+      top: 0.75rem;
+      bottom: 0;
+      left: 5.5px;
+      right: auto;
+      width: 1px;
+      height: auto;
+    }
+
+    .loop-rail li:last-child::before {
+      display: none;
+    }
+
+    .loop-rail li::after {
+      top: 0.3rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .hero {
+      padding-top: calc(var(--header-h) + 1.5rem);
+    }
+
+    .hero-media :global(img) {
+      object-position: 72% 55%;
+    }
+
+    .hero-media::after {
+      background: linear-gradient(0deg, rgba(13, 13, 13, 0.95) 0%, rgba(13, 13, 13, 0.6) 50%, rgba(13, 13, 13, 0.25) 100%);
+    }
+
+    .hero-actions .btn {
+      flex: 1 1 100%;
+    }
+
+    .hero-meta-render {
+      display: none;
+    }
+
+    .ops {
+      grid-template-columns: 1fr;
+    }
+
+    .op,
+    .op + .op {
+      padding-left: 0;
+      padding-right: 0;
+      border-left: 0;
+    }
+
+    .op + .op {
+      border-top: 1px solid var(--rule-dark);
+    }
+
+    .op ul {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+    }
+
+    .principles,
+    .vm {
+      grid-template-columns: 1fr;
+    }
+
+    .statement {
+      min-height: 0;
+      padding-top: 16rem;
+    }
+
+    .cta-actions .btn {
+      flex: 1 1 100%;
+    }
+  }
+</style>
