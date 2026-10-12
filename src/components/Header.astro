@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Arrow from './Arrow.astro';
-import { primaryNav, contactLink, site } from '../data/site';
+import { primaryNav, contactLink, site, link } from '../data/site';
 
 interface Props {
   /** Transparent over a dark hero until the page scrolls. */
@@ -9,13 +9,18 @@ interface Props {
 }
 
 const { overlay = false } = Astro.props;
-const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const isCurrent = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`));
+const normalise = (p: string) => p.replace(/\/$/, '') || '/';
+const path = normalise(Astro.url.pathname);
+const home = normalise(link('/'));
+const isCurrent = (href: string) => {
+  const target = normalise(href);
+  return target === home ? path === home : path === target || path.startsWith(`${target}/`);
+};
 ---
 
 <header class:list={['site-header', { 'is-overlay': overlay }]} data-header>
   <div class="header-inner wrap">
-    <a class="header-logo" href="/" aria-label={`${site.name} home`}>
+    <a class="header-logo" href={link('/')} aria-label={`${site.name} home`}>
       <Logo />
     </a>
 

@@ -1,7 +1,7 @@
 ---
 import Logo from './Logo.astro';
 import Arrow from './Arrow.astro';
-import { primaryNav, secondaryNav, legalNav, site, contactLink } from '../data/site';
+import { primaryNav, secondaryNav, legalNav, site, contactLink, link } from '../data/site';
 
 interface Props {
   showCta?: boolean;
@@ -29,7 +29,7 @@ const year = new Date().getFullYear();
 
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" aria-label={`${site.name} home`} class="footer-logo"><Logo size="lg" /></a>
+        <a href={link('/')} aria-label={`${site.name} home`} class="footer-logo"><Logo size="lg" /></a>
         <p>{site.description}</p>
       </div>
 

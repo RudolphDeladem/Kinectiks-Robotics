@@ -2,7 +2,7 @@
 import { Picture } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import Arrow from '../components/Arrow.astro';
-import { site } from '../data/site';
+import { site, link } from '../data/site';
 
 import roverSunset from '../assets/images/rover-sunset.png';
 import farmerHighlands from '../assets/images/farmer-highlands.png';
@@ -63,8 +63,8 @@ const principles = [
           tasks, reducing dependence on manual labour while increasing efficiency.
         </p>
         <div class="hero-actions">
-          <a class="btn btn--primary" href="/solutions">Explore solutions <Arrow /></a>
-          <a class="btn btn--ghost-dark" href="/about">About Kinectiks</a>
+          <a class="btn btn--primary" href={link('/solutions')}>Explore solutions <Arrow /></a>
+          <a class="btn btn--ghost-dark" href={link('/about')}>About Kinectiks</a>
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@ const principles = [
         </ol>
       </div>
 
-      <a class="text-link platform-link" href="/solutions" data-reveal>See all solutions <Arrow /></a>
+      <a class="text-link platform-link" href={link('/solutions')} data-reveal>See all solutions <Arrow /></a>
     </div>
   </section>
 
@@ -254,7 +254,7 @@ const principles = [
             </div>
           </dl>
 
-          <a class="text-link" href="/about" data-reveal>More about Kinectiks <Arrow /></a>
+          <a class="text-link" href={link('/about')} data-reveal>More about Kinectiks <Arrow /></a>
         </div>
       </div>
     </div>
@@ -267,7 +267,7 @@ const principles = [
       <div class="cta-side" data-reveal style="--delay: 0.1s">
         <p>Have a question, an idea or a field that needs the right machine? We&rsquo;d like to hear from you.</p>
         <div class="cta-actions">
-          <a class="btn btn--ink" href="/contact">Contact us <Arrow /></a>
+          <a class="btn btn--ink" href={link('/contact')}>Contact us <Arrow /></a>
           <a class="btn btn--ghost-ink" href={`mailto:${site.email}`}>{site.email}</a>
         </div>
       </div>
