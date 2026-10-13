@@ -20,7 +20,7 @@ Astro static site (Node 22.12+). See `README.md` for layout of `src/`.
 
 ## UI skills
 
-Project skills live in `.claude/skills/` (from [dawitlabs/ui-skills](https://github.com/dawitlabs/ui-skills), MIT). The official `frontend-design` plugin is enabled in `.claude/settings.json`.
+Project skills live in `.claude/skills/` (from [dawitlabs/ui-skills](https://github.com/dawitlabs/ui-skills) and [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill), both MIT; see `.claude/skills/SOURCES.md`). The official `frontend-design` plugin is enabled in `.claude/settings.json`.
 
 Setup facts these skills need (replaces running `/ui-init`):
 
@@ -30,6 +30,8 @@ Setup facts these skills need (replaces running `/ui-init`):
 - Playwright: installed (`@playwright/test`, `playwright.config.ts`). axe-core is not installed yet; `/a11y` adds it as a dev dependency when first used.
 - Visual direction: no `DESIGN-BRIEF.md` yet. Create it with `/design-grill`, and keep it consistent with the brand rules above (the brand rules win on any conflict).
 - Skills that say "every screen" or "the entire app" (`/uiux`, `/copy`, `/a11y`, `/animate`, `/tokens`): limit them to the one page under review.
+- Ignore skill advice to use placeholder or stock photos (picsum, Unsplash) or generated images. Use the photography in `src/assets/images/`, or ask for more.
+- Skill suggestions for specific fonts, palettes or component libraries are defaults only. The brand rules and `DESIGN-BRIEF.md` override them.
 - Screenshots and scratch scripts go outside the repo (or in `test-results/`, which is ignored); do not commit them.
 
 | Skill | Use for |
@@ -43,4 +45,7 @@ Setup facts these skills need (replaces running `/ui-init`):
 | `/animate` | Micro-interactions and restrained motion |
 | `/copy` | Headlines, CTAs and UI strings (no invented claims) |
 | `/a11y` | WCAG 2.1 AA audit and fixes |
+| `/design-taste-frontend` | Anti-template design direction for landing pages and redesigns |
+| `/redesign-existing-projects` | Audit and upgrade an existing page without breaking it |
+| `/high-end-visual-design` | Premium agency-level finish: spacing, depth, motion |
 | `ui-design-principles` | Background reference, loaded automatically |
