@@ -6,9 +6,11 @@ import { primaryNav, contactLink, site, link } from '../data/site';
 interface Props {
   /** Transparent over a dark hero until the page scrolls. */
   overlay?: boolean;
+  /** Ink text on a cream bar, for pages that open on a light section. */
+  theme?: 'dark' | 'light';
 }
 
-const { overlay = false } = Astro.props;
+const { overlay = false, theme = 'dark' } = Astro.props;
 const normalise = (p: string) => p.replace(/\/$/, '') || '/';
 const path = normalise(Astro.url.pathname);
 const home = normalise(link('/'));
@@ -18,7 +20,7 @@ const isCurrent = (href: string) => {
 };
 ---
 
-<header class:list={['site-header', { 'is-overlay': overlay }]} data-header>
+<header class:list={['site-header', { 'is-overlay': overlay, 'is-light': theme === 'light' }]} data-header>
   <div class="header-inner wrap">
     <a class="header-logo" href={link('/')} aria-label={`${site.name} home`}>
       <Logo />
@@ -105,6 +107,31 @@ const isCurrent = (href: string) => {
     border-bottom-color: var(--rule-dark);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
+  }
+
+  .site-header.is-light {
+    background: var(--cream);
+    color: var(--text-on-light);
+    border-bottom-color: transparent;
+  }
+
+  .site-header.is-light.is-scrolled {
+    border-bottom-color: var(--rule-light);
+  }
+
+  .site-header.is-light .header-nav a {
+    color: rgba(13, 13, 13, 0.72);
+  }
+
+  .site-header.is-light .header-nav a:hover,
+  .site-header.is-light .header-nav a[aria-current='page'] {
+    color: var(--ink);
+  }
+
+  .site-header.is-light.is-open {
+    background: var(--ink);
+    color: var(--text-on-dark);
+    border-bottom-color: var(--rule-dark);
   }
 
   .header-inner {

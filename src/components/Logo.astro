@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import logoMark from '../assets/brand/kinectiks-logo.png';
+import logoMark from '../assets/brand/kinectiks-logo.svg';
 
 interface Props {
   size?: 'md' | 'lg';
@@ -8,19 +7,10 @@ interface Props {
 }
 
 const { size = 'md', class: className } = Astro.props;
-const markHeight = size === 'lg' ? 56 : 34;
 ---
 
 <span class:list={['logo', `logo--${size}`, className]}>
-  <Image
-    src={logoMark}
-    alt=""
-    height={markHeight}
-    densities={[1, 2]}
-    format="webp"
-    class="logo-mark"
-    loading="eager"
-  />
+  <img src={logoMark.src} width={logoMark.width} height={logoMark.height} alt="" class="logo-mark" />
   <span class="logo-word" aria-hidden="true">
     <span class="logo-word-main">Kinectiks</span>
     <span class="logo-word-sub">Robotics</span>
@@ -37,11 +27,11 @@ const markHeight = size === 'lg' ? 56 : 34;
 
   .logo-mark {
     width: auto;
-    height: 34px;
+    height: 30px;
   }
 
   .logo--lg .logo-mark {
-    height: 56px;
+    height: 52px;
   }
 
   .logo-word {

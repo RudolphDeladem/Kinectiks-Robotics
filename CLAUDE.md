@@ -9,7 +9,7 @@ Astro static site (Node 22.12+). See `README.md` for layout of `src/`.
 
 ## Brand rules (apply to every design change)
 
-- **Logo:** use the exact official logo in `src/assets/brand/kinectiks-logo.png` via `src/components/Logo.astro`. Never redraw, recolour, crop or approximate it.
+- **Logo:** use the exact official logo in `src/assets/brand/kinectiks-logo.svg` via `src/components/Logo.astro`. Never redraw, recolour, crop or approximate it.
 - **Colours:** orange, black and white. Cream is an optional neutral. No other brand hues.
 - **Aesthetic:** premium, cinematic agricultural robotics.
 - **Imagery:** high-quality African agricultural photography (see `src/assets/images/`). No generic stock that reads as non-African.

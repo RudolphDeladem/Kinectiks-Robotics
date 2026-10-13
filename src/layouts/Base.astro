@@ -11,9 +11,11 @@ interface Props {
   overlayHeader?: boolean;
   /** Show the contact button in the footer (off when the page ends with its own contact band). */
   footerCta?: boolean;
+  /** Header colour scheme; use 'light' when the page opens on cream. */
+  headerTheme?: 'dark' | 'light';
 }
 
-const { title, description = site.description, overlayHeader = false, footerCta = true } = Astro.props;
+const { title, description = site.description, overlayHeader = false, footerCta = true, headerTheme = 'dark' } = Astro.props;
 const pageTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tagline}`;
 ---
 
@@ -37,7 +39,7 @@ const pageTitle = title ? `${title} | ${site.name}` : `${site.name} | ${site.tag
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-    <Header overlay={overlayHeader} />
+    <Header overlay={overlayHeader} theme={headerTheme} />
     <main id="main">
       <slot />
     </main>
