@@ -20,7 +20,7 @@ Astro static site (Node 22.12+). See `README.md` for layout of `src/`.
 
 ## UI skills
 
-Project skills live in `.claude/skills/` (from [dawitlabs/ui-skills](https://github.com/dawitlabs/ui-skills) and [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill), both MIT; see `.claude/skills/SOURCES.md`). The official `frontend-design` plugin is enabled in `.claude/settings.json`.
+Project skills live in `.claude/skills/` (from [dawitlabs/ui-skills](https://github.com/dawitlabs/ui-skills) and [Leonxlnx/taste-skill](https://github.com/Leonxlnx/taste-skill), both MIT; see `.claude/skills/SOURCES.md`). The official `frontend-design` plugin and the `impeccable` plugin (pbakaus/impeccable) are enabled in `.claude/settings.json`. Impeccable's hooks run its design checker automatically after edits and at the end of each turn.
 
 Setup facts these skills need (replaces running `/ui-init`):
 
@@ -48,4 +48,5 @@ Setup facts these skills need (replaces running `/ui-init`):
 | `/design-taste-frontend` | Anti-template design direction for landing pages and redesigns |
 | `/redesign-existing-projects` | Audit and upgrade an existing page without breaking it |
 | `/high-end-visual-design` | Premium agency-level finish: spacing, depth, motion |
+| `/impeccable` (plugin) | 24 subcommands, e.g. `/impeccable critique`, `/impeccable audit`, `/impeccable polish` |
 | `ui-design-principles` | Background reference, loaded automatically |
